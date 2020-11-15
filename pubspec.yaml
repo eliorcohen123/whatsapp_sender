@@ -1,0 +1,31 @@
+name: whatsapp_sender
+description: A new Flutter application.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.0
+  permission_handler: ^3.0.0
+  contacts_service: ^0.3.10
+  firebase_core: ^0.4.4+3
+  firebase_auth: ^0.16.0
+  firebase_database: ^3.1.6
+  url_launcher: ^5.7.2
+  provider: ^4.0.5+1
+
+  flutter_localizations:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

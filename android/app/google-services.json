@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "717262992420",
+    "firebase_url": "https://whatsappsender-18e20.firebaseio.com",
+    "project_id": "whatsappsender-18e20",
+    "storage_bucket": "whatsappsender-18e20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:717262992420:android:cf3dd3db3281a1bea5d4b1",
+        "android_client_info": {
+          "package_name": "com.flutter.whatsapp_sender"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "717262992420-71hdjchv04chdn69p0mr3jt9aqfc182n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqT7KMNuD2nacPLAnBw-bCnjRkk7nJDY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "717262992420-71hdjchv04chdn69p0mr3jt9aqfc182n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
