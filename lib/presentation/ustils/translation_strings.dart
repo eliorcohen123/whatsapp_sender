@@ -15,7 +15,6 @@ class Translations {
   static Map<String, Map<Object, String>> _localizedValues = {
     'en': {
       Strings.phone_auth: "Phone Auth",
-      Strings.phone: "Phone",
       Strings.send_sms: "Send SMS",
       Strings.login_after_sms: "Login after SMS",
       Strings.please_enter_some_text: "Please enter some text",
@@ -31,7 +30,6 @@ class Translations {
     },
     'he': {
       Strings.phone_auth: "אימות נייד",
-      Strings.phone: "טלפון",
       Strings.send_sms: "שליחת SMS",
       Strings.login_after_sms: "התחברות לאחר SMS",
       Strings.please_enter_some_text: "בבקשה הכנס טקסט כלשהו",
