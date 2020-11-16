@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:whatsapp_sender/presentation/state_management/provider/provider_whatsapp_send.dart';
 import 'package:whatsapp_sender/presentation/ustils/responsive_screen.dart';
 import 'package:whatsapp_sender/presentation/ustils/strings.dart';
@@ -42,16 +42,30 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
     _provider = Provider.of<ProviderWhatsAppSend>(context, listen: false);
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _provider.getContacts();
+      _provider.isGranted().then((value) => {
+            if (value[PermissionGroup.contacts] == PermissionStatus.granted)
+              {
+                _provider.getContacts(),
+              }
+          });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(milliseconds: 3000), () {
-      _provider.rootFirebaseIsExists(
-          _provider.databaseReferenceGet.child(widget.phoneNumber),
-          widget.phoneNumber);
+    Future.delayed(const Duration(milliseconds: 10000), () {
+      _provider.isGranted().then((value) => {
+        if (value[PermissionGroup.contacts] == PermissionStatus.granted)
+          {
+            if (_provider.contactsGet != null)
+              {
+                _provider.rootFirebaseIsExists(
+                    _provider.databaseReferenceGet
+                        .child(widget.phoneNumber),
+                    widget.phoneNumber),
+              }
+          }
+      });
     });
     return SafeArea(
       child: Scaffold(
