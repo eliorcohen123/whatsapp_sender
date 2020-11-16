@@ -48,7 +48,9 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(milliseconds: 3000), () {
-      _provider.sendData(widget.phoneNumber);
+      _provider.rootFirebaseIsExists(
+          _provider.databaseReferenceGet.child(widget.phoneNumber),
+          widget.phoneNumber);
     });
     return SafeArea(
       child: Scaffold(
@@ -85,20 +87,41 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
   Widget _textFieldsData() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _columnTextField(Translations.of(context).getString(Strings.prefix),
-              _provider.prefixControllerGet, 100, 3),
-          UtilsApp.dividerWidth(context, 20),
-          _columnTextField(
-              Translations.of(context).getString(Strings.phone_number),
-              _provider.phoneControllerGet,
-              200,
-              10),
-        ],
-      ),
+      child: !UtilsApp.isRTL(context)
+          ? Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _columnTextField(
+                    Translations.of(context).getString(Strings.prefix),
+                    _provider.prefixControllerGet,
+                    100,
+                    3),
+                UtilsApp.dividerWidth(context, 20),
+                _columnTextField(
+                    Translations.of(context).getString(Strings.phone_number),
+                    _provider.phoneControllerGet,
+                    200,
+                    10),
+              ],
+            )
+          : Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _columnTextField(
+                    Translations.of(context).getString(Strings.phone_number),
+                    _provider.phoneControllerGet,
+                    200,
+                    10),
+                UtilsApp.dividerWidth(context, 20),
+                _columnTextField(
+                    Translations.of(context).getString(Strings.prefix),
+                    _provider.prefixControllerGet,
+                    100,
+                    3),
+              ],
+            ),
     );
   }
 

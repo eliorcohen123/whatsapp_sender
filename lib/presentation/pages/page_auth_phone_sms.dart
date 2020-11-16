@@ -94,29 +94,53 @@ class _PageAuthPhoneSmsProvState extends State<PageAuthPhoneSmsProv> {
           padding: EdgeInsets.only(
             bottom: ResponsiveScreen().heightMediaQuery(context, 20),
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Form(
-                key: _provider.formKeyPrefixGet,
-                child: WidgetTFFFirebase(
-                  length: 3,
-                  width: ResponsiveScreen().widthMediaQuery(context, 108),
-                  controller: _provider.prefixControllerGet,
+          child: !UtilsApp.isRTL(context)
+              ? Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Form(
+                      key: _provider.formKeyPrefixGet,
+                      child: WidgetTFFFirebase(
+                        length: 3,
+                        width: ResponsiveScreen().widthMediaQuery(context, 108),
+                        controller: _provider.prefixControllerGet,
+                      ),
+                    ),
+                    UtilsApp.dividerWidth(context, 5),
+                    Form(
+                      key: _provider.formKeyPhoneGet,
+                      child: WidgetTFFFirebase(
+                        length: 10,
+                        width: ResponsiveScreen().widthMediaQuery(context, 200),
+                        controller: _provider.phoneControllerGet,
+                      ),
+                    ),
+                  ],
+                )
+              : Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Form(
+                      key: _provider.formKeyPhoneGet,
+                      child: WidgetTFFFirebase(
+                        length: 10,
+                        width: ResponsiveScreen().widthMediaQuery(context, 200),
+                        controller: _provider.phoneControllerGet,
+                      ),
+                    ),
+                    UtilsApp.dividerWidth(context, 5),
+                    Form(
+                      key: _provider.formKeyPrefixGet,
+                      child: WidgetTFFFirebase(
+                        length: 3,
+                        width: ResponsiveScreen().widthMediaQuery(context, 108),
+                        controller: _provider.prefixControllerGet,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              UtilsApp.dividerWidth(context, 5),
-              Form(
-                key: _provider.formKeyPhoneGet,
-                child: WidgetTFFFirebase(
-                  length: 10,
-                  width: ResponsiveScreen().widthMediaQuery(context, 200),
-                  controller: _provider.phoneControllerGet,
-                ),
-              ),
-            ],
-          ),
         ),
         Form(
           key: _provider.formKeySmsGet,
@@ -254,7 +278,8 @@ class _PageAuthPhoneSmsProvState extends State<PageAuthPhoneSmsProv> {
           }
         },
         decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
+            contentPadding: EdgeInsets.zero,
+            enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
             borderSide: BorderSide(
               color: Colors.green,
@@ -270,6 +295,7 @@ class _PageAuthPhoneSmsProvState extends State<PageAuthPhoneSmsProv> {
           ),
         ),
         textAlign: TextAlign.center,
+        textAlignVertical: TextAlignVertical.center,
         controller: num,
         validator: (String value) {
           if (value.isEmpty) {

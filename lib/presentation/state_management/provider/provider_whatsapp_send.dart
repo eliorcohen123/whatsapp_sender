@@ -4,13 +4,18 @@ import 'package:flutter/material.dart';
 
 class ProviderWhatsAppSend extends ChangeNotifier {
   final TextEditingController _phoneController = TextEditingController();
-  final TextEditingController prefixController = TextEditingController();
-  final databaseReference = FirebaseDatabase.instance.reference();
+  final TextEditingController _prefixController = TextEditingController();
+  final _databaseReference = FirebaseDatabase.instance.reference();
   Iterable<Contact> _contacts;
+  String _pastePhone;
 
   TextEditingController get phoneControllerGet => _phoneController;
 
-  TextEditingController get prefixControllerGet => prefixController;
+  TextEditingController get prefixControllerGet => _prefixController;
+
+  DatabaseReference get databaseReferenceGet => _databaseReference;
+
+  String get pastePhoneGet => _pastePhone;
 
   void getContacts() async {
     final Iterable<Contact> contacts = await ContactsService.getContacts();
@@ -20,7 +25,7 @@ class ProviderWhatsAppSend extends ChangeNotifier {
 
   void sendData(String phoneNumber) async {
     for (int i = 0; i < _contacts?.length ?? 0; i++) {
-      databaseReference
+      _databaseReference
           .child(phoneNumber)
           .child(_contacts?.elementAt(i)?.phones?.first?.value?.toString())
           .set({
@@ -28,5 +33,14 @@ class ProviderWhatsAppSend extends ChangeNotifier {
         'phone': _contacts?.elementAt(i)?.phones?.first?.value?.toString()
       });
     }
+  }
+
+  Future<bool> rootFirebaseIsExists(
+      DatabaseReference databaseReference, String phoneNumber) async {
+    DataSnapshot snapshot = await databaseReference.once();
+    if (snapshot.value == null) {
+      sendData(phoneNumber);
+    }
+    return snapshot != null;
   }
 }

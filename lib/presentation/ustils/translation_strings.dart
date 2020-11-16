@@ -24,9 +24,9 @@ class Translations {
       Strings.message: "Message:",
       Strings.invalid_phone: "Invalid phone number",
       Strings.prefix: "Prefix",
-      Strings.start_conversation: "Start a conversation",
+      Strings.start_conversation: "Start a chat",
       Strings.phone_number: "Phone number",
-      Strings.enter_a_message: "Enter a phone number you would like to send a message"
+      Strings.enter_a_message: "Enter a phone number you would like to send a WhatsApp message"
     },
     'he': {
       Strings.phone_auth: "אימות נייד",
@@ -39,9 +39,9 @@ class Translations {
       Strings.message: "הודעה:",
       Strings.invalid_phone: "מס' נייד לא חוקי",
       Strings.prefix: "קידומת",
-      Strings.start_conversation: "התחל שיחה",
+      Strings.start_conversation: "התחל צ'אט",
       Strings.phone_number: "מס' טלפון",
-      Strings.enter_a_message: "הכנס מספר טלפון שברצונך לשלוח אליו הודעה"
+      Strings.enter_a_message: "הכנס/י מספר טלפון אליו תרצה/י לשלוח הודעת WhatsApp"
     },
   };
 
