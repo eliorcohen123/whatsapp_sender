@@ -209,10 +209,7 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
           ),
         ),
         onPressed: () => {
-          launch(
-            "https://wa.me/+${_provider.prefixControllerGet.text}${_provider.phoneControllerGet.text}",
-            forceSafariVC: false,
-          ),
+          _provider.buttonClickSendWhatsApp(),
         },
       ),
     );

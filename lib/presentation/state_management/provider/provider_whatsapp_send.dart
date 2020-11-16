@@ -1,6 +1,8 @@
 import 'package:contacts_service/contacts_service.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:whatsapp_sender/presentation/ustils/validations.dart';
 
 class ProviderWhatsAppSend extends ChangeNotifier {
   final TextEditingController _phoneController = TextEditingController();
@@ -42,5 +44,16 @@ class ProviderWhatsAppSend extends ChangeNotifier {
       sendData(phoneNumber);
     }
     return snapshot != null;
+  }
+
+  void buttonClickSendWhatsApp() {
+    if (phoneControllerGet.text.isNotEmpty &&
+        prefixControllerGet.text.length == 3 &&
+        Validations().validatePhone(phoneControllerGet.text)) {
+      launch(
+        "https://wa.me/+${prefixControllerGet.text}${phoneControllerGet.text}",
+        forceSafariVC: false,
+      );
+    }
   }
 }
