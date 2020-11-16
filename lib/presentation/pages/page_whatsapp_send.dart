@@ -39,8 +39,9 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
   void initState() {
     super.initState();
 
+    _provider = Provider.of<ProviderWhatsAppSend>(context, listen: false);
+
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _provider = Provider.of<ProviderWhatsAppSend>(context, listen: false);
       _provider.getContacts();
     });
   }

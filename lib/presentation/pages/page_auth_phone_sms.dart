@@ -32,8 +32,9 @@ class _PageAuthPhoneSmsProvState extends State<PageAuthPhoneSmsProv> {
   void initState() {
     super.initState();
 
+    _provider = Provider.of<ProviderPhoneSMSAuth>(context, listen: false);
+
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _provider = Provider.of<ProviderPhoneSMSAuth>(context, listen: false);
       _provider.getContactsPermission();
       _provider.checkLoginUserFirebase(context);
       _provider.isSuccess(null);
