@@ -1,3 +1,4 @@
+import 'package:clipboard/clipboard.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +42,13 @@ class ProviderWhatsAppSend extends ChangeNotifier {
         });
       } catch (e) {}
     }
+  }
+
+  void getClipboard() {
+    FlutterClipboard.paste().then((value) {
+      phoneControllerGet.text = value;
+      notifyListeners();
+    });
   }
 
   Future<bool> _rootFirebaseIsExists(

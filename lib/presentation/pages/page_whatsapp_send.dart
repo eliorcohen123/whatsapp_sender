@@ -42,6 +42,7 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
     _provider = Provider.of<ProviderWhatsAppSend>(context, listen: false);
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _provider.getClipboard();
       _provider.isGranted().then((value) => {
             if (value[PermissionGroup.contacts] == PermissionStatus.granted)
               {
