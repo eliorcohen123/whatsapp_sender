@@ -53,20 +53,7 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(milliseconds: 10000), () {
-      _provider.isGranted().then((value) => {
-        if (value[PermissionGroup.contacts] == PermissionStatus.granted)
-          {
-            if (_provider.contactsGet != null)
-              {
-                _provider.rootFirebaseIsExists(
-                    _provider.databaseReferenceGet
-                        .child(widget.phoneNumber),
-                    widget.phoneNumber),
-              }
-          }
-      });
-    });
+    _provider.pushContactsToFirebase(widget.phoneNumber);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.blueAccent,
