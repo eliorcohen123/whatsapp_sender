@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp_sender/presentation/state_management/provider/provider_whatsapp_send.dart';
 import 'package:whatsapp_sender/presentation/ustils/responsive_screen.dart';
@@ -43,12 +42,6 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _provider.getClipboard();
-      _provider.isGranted().then((value) => {
-            if (value[PermissionGroup.contacts] == PermissionStatus.granted)
-              {
-                _provider.getContacts(),
-              }
-          });
     });
   }
 

@@ -83,18 +83,10 @@ class ProviderWhatsAppSend extends ChangeNotifier {
           if (value[PermissionGroup.contacts] == PermissionStatus.granted)
             {
               getContacts().then((value) => {
-                    isGranted().then((value) => {
-                          if (value[PermissionGroup.contacts] ==
-                              PermissionStatus.granted)
-                            {
-                              if (contactsGet != null)
-                                {
-                                  _rootFirebaseIsExists(
-                                      databaseReferenceGet.child(number),
-                                      number),
-                                }
-                            }
-                        }),
+                    {
+                      _rootFirebaseIsExists(
+                          databaseReferenceGet.child(number), number),
+                    }
                   }),
             }
         });
