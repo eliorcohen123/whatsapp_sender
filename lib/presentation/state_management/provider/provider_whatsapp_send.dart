@@ -46,8 +46,10 @@ class ProviderWhatsAppSend extends ChangeNotifier {
 
   void getClipboard() {
     FlutterClipboard.paste().then((value) {
-      phoneControllerGet.text = value;
-      notifyListeners();
+      if (Validations().validatePhone(value)) {
+        phoneControllerGet.text = value;
+        notifyListeners();
+      }
     });
   }
 
@@ -92,7 +94,6 @@ class ProviderWhatsAppSend extends ChangeNotifier {
 
   void getCodeCountry(String value) {
     _prefixCode = value;
-    print(value);
     notifyListeners();
   }
 }

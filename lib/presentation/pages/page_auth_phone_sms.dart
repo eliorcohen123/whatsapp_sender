@@ -117,6 +117,8 @@ class _PageAuthPhoneSmsProvState extends State<PageAuthPhoneSmsProv> {
                         Container(
                           height:
                               ResponsiveScreen().heightMediaQuery(context, 60),
+                          width:
+                              ResponsiveScreen().widthMediaQuery(context, 108),
                           decoration: BoxDecoration(
                             border: Border.all(
                               color: Colors.green,
@@ -128,6 +130,8 @@ class _PageAuthPhoneSmsProvState extends State<PageAuthPhoneSmsProv> {
                           child: CountryListPick(
                             pickerBuilder: (context, CountryCode countryCode) {
                               return Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Image.asset(
                                     countryCode.flagUri,
@@ -224,6 +228,8 @@ class _PageAuthPhoneSmsProvState extends State<PageAuthPhoneSmsProv> {
                         Container(
                           height:
                               ResponsiveScreen().heightMediaQuery(context, 60),
+                          width:
+                              ResponsiveScreen().widthMediaQuery(context, 108),
                           decoration: BoxDecoration(
                             border: Border.all(
                               color: Colors.green,
@@ -235,6 +241,8 @@ class _PageAuthPhoneSmsProvState extends State<PageAuthPhoneSmsProv> {
                           child: CountryListPick(
                             pickerBuilder: (context, CountryCode countryCode) {
                               return Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
                                     countryCode.dialCode,

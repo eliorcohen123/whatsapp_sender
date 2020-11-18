@@ -102,6 +102,7 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
                     UtilsApp.dividerHeight(context, 5),
                     Container(
                       height: ResponsiveScreen().heightMediaQuery(context, 40),
+                      width: ResponsiveScreen().widthMediaQuery(context, 108),
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.3),
                         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -109,6 +110,8 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
                       child: CountryListPick(
                         pickerBuilder: (context, CountryCode countryCode) {
                           return Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Image.asset(
                                 countryCode.flagUri,
@@ -164,6 +167,7 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
                     UtilsApp.dividerHeight(context, 5),
                     Container(
                       height: ResponsiveScreen().heightMediaQuery(context, 40),
+                      width: ResponsiveScreen().widthMediaQuery(context, 108),
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.3),
                         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -171,6 +175,8 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
                       child: CountryListPick(
                         pickerBuilder: (context, CountryCode countryCode) {
                           return Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
                                 countryCode.dialCode,
