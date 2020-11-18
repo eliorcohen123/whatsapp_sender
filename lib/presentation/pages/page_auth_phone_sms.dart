@@ -100,22 +100,53 @@ class _PageAuthPhoneSmsProvState extends State<PageAuthPhoneSmsProv> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Form(
-                      key: _provider.formKeyPrefixGet,
-                      child: WidgetTFFFirebase(
-                        length: 3,
-                        width: ResponsiveScreen().widthMediaQuery(context, 108),
-                        controller: _provider.prefixControllerGet,
-                      ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          Translations.of(context).getString(Strings.prefix),
+                          style: TextStyle(
+                            color: Colors.greenAccent,
+                            fontSize: 15,
+                          ),
+                        ),
+                        UtilsApp.dividerHeight(context, 5),
+                        Form(
+                          key: _provider.formKeyPrefixGet,
+                          child: WidgetTFFFirebase(
+                            length: 3,
+                            width: ResponsiveScreen()
+                                .widthMediaQuery(context, 108),
+                            controller: _provider.prefixControllerGet,
+                          ),
+                        ),
+                      ],
                     ),
                     UtilsApp.dividerWidth(context, 5),
-                    Form(
-                      key: _provider.formKeyPhoneGet,
-                      child: WidgetTFFFirebase(
-                        length: 10,
-                        width: ResponsiveScreen().widthMediaQuery(context, 200),
-                        controller: _provider.phoneControllerGet,
-                      ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          Translations.of(context)
+                              .getString(Strings.phone_number),
+                          style: TextStyle(
+                            color: Colors.greenAccent,
+                            fontSize: 15,
+                          ),
+                        ),
+                        UtilsApp.dividerHeight(context, 5),
+                        Form(
+                          key: _provider.formKeyPhoneGet,
+                          child: WidgetTFFFirebase(
+                            length: 10,
+                            width: ResponsiveScreen()
+                                .widthMediaQuery(context, 200),
+                            controller: _provider.phoneControllerGet,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 )
@@ -123,22 +154,53 @@ class _PageAuthPhoneSmsProvState extends State<PageAuthPhoneSmsProv> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Form(
-                      key: _provider.formKeyPhoneGet,
-                      child: WidgetTFFFirebase(
-                        length: 10,
-                        width: ResponsiveScreen().widthMediaQuery(context, 200),
-                        controller: _provider.phoneControllerGet,
-                      ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          Translations.of(context)
+                              .getString(Strings.phone_number),
+                          style: TextStyle(
+                            color: Colors.greenAccent,
+                            fontSize: 15,
+                          ),
+                        ),
+                        UtilsApp.dividerHeight(context, 5),
+                        Form(
+                          key: _provider.formKeyPhoneGet,
+                          child: WidgetTFFFirebase(
+                            length: 10,
+                            width: ResponsiveScreen()
+                                .widthMediaQuery(context, 200),
+                            controller: _provider.phoneControllerGet,
+                          ),
+                        ),
+                      ],
                     ),
                     UtilsApp.dividerWidth(context, 5),
-                    Form(
-                      key: _provider.formKeyPrefixGet,
-                      child: WidgetTFFFirebase(
-                        length: 3,
-                        width: ResponsiveScreen().widthMediaQuery(context, 108),
-                        controller: _provider.prefixControllerGet,
-                      ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          Translations.of(context).getString(Strings.prefix),
+                          style: TextStyle(
+                            color: Colors.greenAccent,
+                            fontSize: 15,
+                          ),
+                        ),
+                        UtilsApp.dividerHeight(context, 5),
+                        Form(
+                          key: _provider.formKeyPrefixGet,
+                          child: WidgetTFFFirebase(
+                            length: 3,
+                            width: ResponsiveScreen()
+                                .widthMediaQuery(context, 108),
+                            controller: _provider.prefixControllerGet,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -279,8 +341,8 @@ class _PageAuthPhoneSmsProvState extends State<PageAuthPhoneSmsProv> {
           }
         },
         decoration: InputDecoration(
-            contentPadding: EdgeInsets.zero,
-            enabledBorder: OutlineInputBorder(
+          contentPadding: EdgeInsets.zero,
+          enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
             borderSide: BorderSide(
               color: Colors.green,

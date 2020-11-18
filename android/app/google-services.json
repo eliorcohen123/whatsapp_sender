@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "717262992420",
-    "firebase_url": "https://whatsappsender-18e20.firebaseio.com",
-    "project_id": "whatsappsender-18e20",
-    "storage_bucket": "whatsappsender-18e20.appspot.com"
+    "project_number": "436985123495",
+    "firebase_url": "https://whatsappsender-bd5a2.firebaseio.com",
+    "project_id": "whatsappsender-bd5a2",
+    "storage_bucket": "whatsappsender-bd5a2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:717262992420:android:cf3dd3db3281a1bea5d4b1",
+        "mobilesdk_app_id": "1:436985123495:android:7463d6ebbc89904b558182",
         "android_client_info": {
           "package_name": "com.flutter.whatsapp_sender"
         }
       },
       "oauth_client": [
         {
-          "client_id": "717262992420-71hdjchv04chdn69p0mr3jt9aqfc182n.apps.googleusercontent.com",
+          "client_id": "436985123495-p8npgrgu329r4de9715a9g1oqpp1fh4e.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCqT7KMNuD2nacPLAnBw-bCnjRkk7nJDY0"
+          "current_key": "AIzaSyDaJ9lEIdMr5tjDtkB8AjDyMjRTGxx2BUw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "717262992420-71hdjchv04chdn69p0mr3jt9aqfc182n.apps.googleusercontent.com",
+              "client_id": "436985123495-p8npgrgu329r4de9715a9g1oqpp1fh4e.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
