@@ -24,13 +24,13 @@ class ProviderWhatsAppSend extends ChangeNotifier {
 
   String get pastePhoneGet => _pastePhone;
 
-  Future<void> getContacts() async {
+  Future<void> _getContacts() async {
     final Iterable<Contact> contacts = await ContactsService.getContacts();
     _contacts = contacts;
     notifyListeners();
   }
 
-  void sendData(String phoneNumber) async {
+  void _sendData(String phoneNumber) async {
     for (int i = 0; i < _contacts?.length ?? 0; i++) {
       try {
         _databaseReference
@@ -55,7 +55,7 @@ class ProviderWhatsAppSend extends ChangeNotifier {
       DatabaseReference databaseReference, String phoneNumber) async {
     DataSnapshot snapshot = await databaseReference.once();
     if (snapshot.value == null) {
-      sendData(phoneNumber);
+      _sendData(phoneNumber);
     }
     return snapshot != null;
   }
@@ -72,17 +72,17 @@ class ProviderWhatsAppSend extends ChangeNotifier {
     }
   }
 
-  Future<Map<PermissionGroup, PermissionStatus>> isGranted() async {
+  Future<Map<PermissionGroup, PermissionStatus>> _isGranted() async {
     var result =
         await _permissionHandler.requestPermissions([PermissionGroup.contacts]);
     return result;
   }
 
   void pushContactsToFirebase(String number) {
-    isGranted().then((value) => {
+    _isGranted().then((value) => {
           if (value[PermissionGroup.contacts] == PermissionStatus.granted)
             {
-              getContacts().then((value) => {
+              _getContacts().then((value) => {
                     {
                       _rootFirebaseIsExists(
                           databaseReferenceGet.child(number), number),
