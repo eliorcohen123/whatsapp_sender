@@ -1,3 +1,4 @@
+import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -35,6 +36,7 @@ class _PageAuthPhoneSmsProvState extends State<PageAuthPhoneSmsProv> {
     _provider = Provider.of<ProviderPhoneSMSAuth>(context, listen: false);
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _provider.getCodeCountry("+972");
       _provider.getContactsPermission();
       _provider.checkLoginUserFirebase(context);
       _provider.isSuccess(null);
@@ -112,13 +114,41 @@ class _PageAuthPhoneSmsProvState extends State<PageAuthPhoneSmsProv> {
                           ),
                         ),
                         UtilsApp.dividerHeight(context, 5),
-                        Form(
-                          key: _provider.formKeyPrefixGet,
-                          child: WidgetTFFFirebase(
-                            length: 3,
-                            width: ResponsiveScreen()
-                                .widthMediaQuery(context, 108),
-                            controller: _provider.prefixControllerGet,
+                        Container(
+                          height:
+                              ResponsiveScreen().heightMediaQuery(context, 60),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.green,
+                              width: ResponsiveScreen()
+                                  .widthMediaQuery(context, 2),
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                          child: CountryListPick(
+                            pickerBuilder: (context, CountryCode countryCode) {
+                              return Row(
+                                children: [
+                                  Image.asset(
+                                    countryCode.flagUri,
+                                    width: 40,
+                                    height: 20,
+                                    package: 'country_list_pick',
+                                  ),
+                                  Text(
+                                    countryCode.dialCode,
+                                    style: const TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.greenAccent,
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                            initialSelection: '+972',
+                            onChanged: (CountryCode code) {
+                              _provider.getCodeCountry(code.dialCode);
+                            },
                           ),
                         ),
                       ],
@@ -191,13 +221,41 @@ class _PageAuthPhoneSmsProvState extends State<PageAuthPhoneSmsProv> {
                           ),
                         ),
                         UtilsApp.dividerHeight(context, 5),
-                        Form(
-                          key: _provider.formKeyPrefixGet,
-                          child: WidgetTFFFirebase(
-                            length: 3,
-                            width: ResponsiveScreen()
-                                .widthMediaQuery(context, 108),
-                            controller: _provider.prefixControllerGet,
+                        Container(
+                          height:
+                              ResponsiveScreen().heightMediaQuery(context, 60),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.green,
+                              width: ResponsiveScreen()
+                                  .widthMediaQuery(context, 2),
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                          child: CountryListPick(
+                            pickerBuilder: (context, CountryCode countryCode) {
+                              return Row(
+                                children: [
+                                  Text(
+                                    countryCode.dialCode,
+                                    style: const TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.greenAccent,
+                                    ),
+                                  ),
+                                  Image.asset(
+                                    countryCode.flagUri,
+                                    width: 40,
+                                    height: 20,
+                                    package: 'country_list_pick',
+                                  ),
+                                ],
+                              );
+                            },
+                            initialSelection: '+972',
+                            onChanged: (CountryCode code) {
+                              _provider.getCodeCountry(code.dialCode);
+                            },
                           ),
                         ),
                       ],

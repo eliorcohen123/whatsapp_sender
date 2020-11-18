@@ -1,3 +1,4 @@
+import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -41,6 +42,7 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
     _provider = Provider.of<ProviderWhatsAppSend>(context, listen: false);
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _provider.getCodeCountry("+972");
       _provider.getClipboard();
     });
   }
@@ -88,11 +90,50 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _columnTextField(
-                    Translations.of(context).getString(Strings.prefix),
-                    _provider.prefixControllerGet,
-                    100,
-                    3),
+                Column(
+                  children: [
+                    Text(
+                      Translations.of(context).getString(Strings.prefix),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                      ),
+                    ),
+                    UtilsApp.dividerHeight(context, 5),
+                    Container(
+                      height: ResponsiveScreen().heightMediaQuery(context, 40),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.3),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: CountryListPick(
+                        pickerBuilder: (context, CountryCode countryCode) {
+                          return Row(
+                            children: [
+                              Image.asset(
+                                countryCode.flagUri,
+                                width: 40,
+                                height: 20,
+                                package: 'country_list_pick',
+                              ),
+                              Text(
+                                countryCode.dialCode,
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.greenAccent,
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                        initialSelection: '+972',
+                        onChanged: (CountryCode code) {
+                          _provider.getCodeCountry(code.dialCode);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
                 UtilsApp.dividerWidth(context, 20),
                 _columnTextField(
                     Translations.of(context).getString(Strings.phone_number),
@@ -111,11 +152,50 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
                     200,
                     10),
                 UtilsApp.dividerWidth(context, 20),
-                _columnTextField(
-                    Translations.of(context).getString(Strings.prefix),
-                    _provider.prefixControllerGet,
-                    100,
-                    3),
+                Column(
+                  children: [
+                    Text(
+                      Translations.of(context).getString(Strings.prefix),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                      ),
+                    ),
+                    UtilsApp.dividerHeight(context, 5),
+                    Container(
+                      height: ResponsiveScreen().heightMediaQuery(context, 40),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.3),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: CountryListPick(
+                        pickerBuilder: (context, CountryCode countryCode) {
+                          return Row(
+                            children: [
+                              Text(
+                                countryCode.dialCode,
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.greenAccent,
+                                ),
+                              ),
+                              Image.asset(
+                                countryCode.flagUri,
+                                width: 40,
+                                height: 20,
+                                package: 'country_list_pick',
+                              ),
+                            ],
+                          );
+                        },
+                        initialSelection: '+972',
+                        onChanged: (CountryCode code) {
+                          _provider.getCodeCountry(code.dialCode);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
     );
@@ -134,7 +214,7 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
         ),
         UtilsApp.dividerHeight(context, 5),
         Container(
-          height: 40,
+          height: ResponsiveScreen().heightMediaQuery(context, 40),
           width: width,
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.3),

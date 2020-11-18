@@ -21,6 +21,7 @@ class WidgetTFFFirebase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: ResponsiveScreen().heightMediaQuery(context, 60),
       width: width,
       child: TextFormField(
         textAlign: TextAlign.center,

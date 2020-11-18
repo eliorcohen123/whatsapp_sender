@@ -12,11 +12,11 @@ class ProviderWhatsAppSend extends ChangeNotifier {
   final PermissionHandler _permissionHandler = PermissionHandler();
   final _databaseReference = FirebaseDatabase.instance.reference();
   Iterable<Contact> _contacts;
-  String _pastePhone;
+  String _pastePhone, _prefixCode;
 
   TextEditingController get phoneControllerGet => _phoneController;
 
-  TextEditingController get prefixControllerGet => _prefixController;
+  String get prefixCodeGet => _prefixCode;
 
   DatabaseReference get databaseReferenceGet => _databaseReference;
 
@@ -62,11 +62,9 @@ class ProviderWhatsAppSend extends ChangeNotifier {
 
   void buttonClickSendWhatsApp() {
     if (phoneControllerGet.text.isNotEmpty &&
-        prefixControllerGet.text.isNotEmpty &&
-        prefixControllerGet.text.length == 3 &&
         Validations().validatePhone(phoneControllerGet.text)) {
       launch(
-        "https://wa.me/+${prefixControllerGet.text}${phoneControllerGet.text}",
+        "https://wa.me/$prefixCodeGet${phoneControllerGet.text}",
         forceSafariVC: false,
       );
     }
@@ -90,5 +88,11 @@ class ProviderWhatsAppSend extends ChangeNotifier {
                   }),
             }
         });
+  }
+
+  void getCodeCountry(String value) {
+    _prefixCode = value;
+    print(value);
+    notifyListeners();
   }
 }

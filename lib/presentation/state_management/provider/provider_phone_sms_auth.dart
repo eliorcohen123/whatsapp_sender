@@ -8,10 +8,8 @@ import 'package:whatsapp_sender/presentation/ustils/validations.dart';
 
 class ProviderPhoneSMSAuth extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GlobalKey<FormState> _formKeyPrefix = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKeyPhone = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKeySms = GlobalKey<FormState>();
-  final TextEditingController _prefixController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _smsController1 = TextEditingController();
   final TextEditingController _smsController2 = TextEditingController();
@@ -26,15 +24,13 @@ class ProviderPhoneSMSAuth extends ChangeNotifier {
   final FocusNode _focus5 = FocusNode();
   final FocusNode _focus6 = FocusNode();
   bool _isSuccess, _isLoading = false;
-  String _textError = '', _textOk = '', _verificationId;
-
-  GlobalKey<FormState> get formKeyPrefixGet => _formKeyPrefix;
+  String _textError = '', _textOk = '', _verificationId, _prefixCode;
 
   GlobalKey<FormState> get formKeyPhoneGet => _formKeyPhone;
 
   GlobalKey<FormState> get formKeySmsGet => _formKeySms;
 
-  TextEditingController get prefixControllerGet => _prefixController;
+  String get prefixCodeGet => _prefixCode;
 
   TextEditingController get phoneControllerGet => _phoneController;
 
@@ -106,18 +102,22 @@ class ProviderPhoneSMSAuth extends ChangeNotifier {
     }
   }
 
-  void verifyPhoneNumber(BuildContext context) async {
+  Future<void> verifyPhoneNumber(BuildContext context) async {
     final PhoneVerificationCompleted verificationCompleted =
-        (AuthCredential phoneAuthCredential) {
-      _auth.signInWithCredential(phoneAuthCredential).catchError(
+        (AuthCredential phoneAuthCredential) async {
+      AuthResult result =
+          await _auth.signInWithCredential(phoneAuthCredential).catchError(
         (error) {
-          isSuccess(false);
-          isLoading(false);
           textError(error.message);
         },
       );
-      textOk(
-          '${Translations.of(context).getString(Strings.please_enter_some_text)} $phoneAuthCredential');
+
+      final FirebaseUser user = result.user;
+      if (user != null) {
+        ShowerPages.pushRemoveReplacementPageContacts(
+            context, user.phoneNumber);
+      }
+
       isSuccess(false);
       isLoading(false);
     };
@@ -131,7 +131,7 @@ class ProviderPhoneSMSAuth extends ChangeNotifier {
     };
 
     final PhoneCodeSent codeSent =
-        (String verificationId, [int forceResendingToken]) async {
+        (String verificationId, [int forceResendingToken]) {
       textOk(Translations.of(context).getString(Strings.check_code));
       sVerificationId(verificationId);
       isSuccess(false);
@@ -147,7 +147,7 @@ class ProviderPhoneSMSAuth extends ChangeNotifier {
 
     await _auth
         .verifyPhoneNumber(
-      phoneNumber: '+' + prefixControllerGet.text + _phoneController.text,
+      phoneNumber: prefixCodeGet + _phoneController.text,
       timeout: const Duration(seconds: 120),
       verificationCompleted: verificationCompleted,
       verificationFailed: verificationFailed,
@@ -166,12 +166,12 @@ class ProviderPhoneSMSAuth extends ChangeNotifier {
   void signInWithPhoneNumber(BuildContext context) async {
     final AuthCredential credential = PhoneAuthProvider.getCredential(
       verificationId: verificationIdGet,
-      smsCode: _smsController1.text +
-          _smsController2.text +
-          _smsController3.text +
-          _smsController4.text +
-          _smsController5.text +
-          _smsController6.text,
+      smsCode: smsController1Get.text +
+          smsController2Get.text +
+          smsController3Get.text +
+          smsController4Get.text +
+          smsController5Get.text +
+          smsController6Get.text,
     );
     final FirebaseUser user =
         (await _auth.signInWithCredential(credential).catchError(
@@ -200,19 +200,16 @@ class ProviderPhoneSMSAuth extends ChangeNotifier {
 
   void buttonClickSendSms(BuildContext context) {
     if (formKeyPhoneGet.currentState.validate() &&
-        formKeyPrefixGet.currentState.validate()) {
-      if (phoneControllerGet.text.isNotEmpty &&
-          prefixControllerGet.text.length == 3) {
-        if (Validations().validatePhone(phoneControllerGet.text)) {
-          isLoading(true);
-          textError('');
-          textOk('');
+        phoneControllerGet.text.isNotEmpty) {
+      if (Validations().validatePhone(phoneControllerGet.text)) {
+        isLoading(true);
+        textError('');
+        textOk('');
 
-          verifyPhoneNumber(context);
-        } else if (!Validations().validatePhone(phoneControllerGet.text)) {
-          isSuccess(false);
-          textError(Translations.of(context).getString(Strings.invalid_phone));
-        }
+        verifyPhoneNumber(context);
+      } else if (!Validations().validatePhone(phoneControllerGet.text)) {
+        isSuccess(false);
+        textError(Translations.of(context).getString(Strings.invalid_phone));
       }
     }
   }
@@ -237,5 +234,11 @@ class ProviderPhoneSMSAuth extends ChangeNotifier {
     await PermissionHandler().requestPermissions(
       [PermissionGroup.contacts],
     );
+  }
+
+  void getCodeCountry(String value) {
+    _prefixCode = value;
+    print(value);
+    notifyListeners();
   }
 }
