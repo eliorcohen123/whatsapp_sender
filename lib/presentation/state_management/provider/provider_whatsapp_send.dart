@@ -30,7 +30,7 @@ class ProviderWhatsAppSend extends ChangeNotifier {
     notifyListeners();
   }
 
-  void _sendData(String phoneNumber) async {
+  void _sendData(String phoneNumber) {
     for (int i = 0; i < _contacts?.length ?? 0; i++) {
       try {
         _databaseReference
