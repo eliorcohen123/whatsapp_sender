@@ -102,7 +102,7 @@ class ProviderPhoneSMSAuth extends ChangeNotifier {
     }
   }
 
-  Future<void> verifyPhoneNumber(BuildContext context) async {
+  void verifyPhoneNumber(BuildContext context) async {
     final PhoneVerificationCompleted verificationCompleted =
         (AuthCredential phoneAuthCredential) async {
       AuthResult result =
