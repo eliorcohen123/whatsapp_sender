@@ -102,7 +102,7 @@ class ProviderPhoneSMSAuth extends ChangeNotifier {
     }
   }
 
-  void verifyPhoneNumber(BuildContext context) async {
+  void _verifyPhoneNumber(BuildContext context) async {
     final PhoneVerificationCompleted verificationCompleted =
         (AuthCredential phoneAuthCredential) async {
       AuthResult result =
@@ -206,7 +206,7 @@ class ProviderPhoneSMSAuth extends ChangeNotifier {
         textError('');
         textOk('');
 
-        verifyPhoneNumber(context);
+        _verifyPhoneNumber(context);
       } else if (!Validations().validatePhone(phoneControllerGet.text)) {
         isSuccess(false);
         textError(Translations.of(context).getString(Strings.invalid_phone));
