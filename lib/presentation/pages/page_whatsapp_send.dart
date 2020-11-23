@@ -32,7 +32,8 @@ class PageWhatsAppSendProv extends StatefulWidget {
   _PageWhatsAppSendProvState createState() => _PageWhatsAppSendProvState();
 }
 
-class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
+class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
+    with WidgetsBindingObserver {
   ProviderWhatsAppSend _provider;
 
   @override
@@ -42,9 +43,24 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv> {
     _provider = Provider.of<ProviderWhatsAppSend>(context, listen: false);
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _provider.getCodeCountry("+972");
+      WidgetsBinding.instance.addObserver(this);
       _provider.getClipboard();
+      _provider.getCodeCountry("+972");
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    WidgetsBinding.instance.removeObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused) {
+      _provider.phoneControllerGet.clear();
+    }
   }
 
   @override

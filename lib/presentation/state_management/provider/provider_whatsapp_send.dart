@@ -8,7 +8,6 @@ import 'package:whatsapp_sender/presentation/ustils/validations.dart';
 
 class ProviderWhatsAppSend extends ChangeNotifier {
   final TextEditingController _phoneController = TextEditingController();
-  final TextEditingController _prefixController = TextEditingController();
   final PermissionHandler _permissionHandler = PermissionHandler();
   final _databaseReference = FirebaseDatabase.instance.reference();
   Iterable<Contact> _contacts;
