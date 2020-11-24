@@ -31,7 +31,7 @@ class Translations {
       Strings.paste_text_dialog:
           "Are you interested to paste your copied cell phone number?",
       Strings.message_text_dialog:
-          "Are you interested to pass to a WhatsApp conversation with the mobile number",
+          "Are you interested to pass to a WhatsApp conversation with the cell phone number",
       Strings.yes: "Yes",
       Strings.no: "No",
     },
