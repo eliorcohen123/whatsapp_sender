@@ -26,7 +26,14 @@ class Translations {
       Strings.prefix: "Prefix",
       Strings.start_conversation: "Start a chat",
       Strings.phone_number: "Phone number",
-      Strings.enter_a_message: "Enter a phone number you would like to send a WhatsApp message"
+      Strings.enter_a_message:
+          "Enter a phone number you would like to send a WhatsApp message",
+      Strings.paste_text_dialog:
+          "Are you interested to paste your copied cell phone number?",
+      Strings.message_text_dialog:
+          "Are you interested to pass to a WhatsApp conversation with the mobile number",
+      Strings.yes: "Yes",
+      Strings.no: "No",
     },
     'he': {
       Strings.phone_auth: "אימות נייד",
@@ -41,7 +48,14 @@ class Translations {
       Strings.prefix: "קידומת",
       Strings.start_conversation: "התחל/י צ'אט",
       Strings.phone_number: "מס' טלפון",
-      Strings.enter_a_message: "הכנס/י מספר טלפון אליו תרצה/י לשלוח הודעת WhatsApp"
+      Strings.enter_a_message:
+          "הכנס/י מספר טלפון אליו תרצה/י לשלוח הודעת WhatsApp",
+      Strings.paste_text_dialog:
+          "האם את/ה מעוניין/ת להדביק את מס' הנייד המועתק אצלך?",
+      Strings.message_text_dialog:
+          "האם את/ה מעוניין/ת לעבור לשיחת WhatsApp עם מס' הנייד",
+      Strings.yes: "כן",
+      Strings.no: "לא",
     },
   };
 

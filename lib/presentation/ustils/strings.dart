@@ -11,5 +11,9 @@ enum Strings {
   prefix,
   start_conversation,
   phone_number,
-  enter_a_message
+  enter_a_message,
+  paste_text_dialog,
+  message_text_dialog,
+  no,
+  yes
 }

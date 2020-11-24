@@ -1,3 +1,4 @@
+import 'package:clipboard/clipboard.dart';
 import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,6 +8,7 @@ import 'package:whatsapp_sender/presentation/ustils/responsive_screen.dart';
 import 'package:whatsapp_sender/presentation/ustils/strings.dart';
 import 'package:whatsapp_sender/presentation/ustils/translation_strings.dart';
 import 'package:whatsapp_sender/presentation/ustils/utils_app.dart';
+import 'package:whatsapp_sender/presentation/ustils/validations.dart';
 
 class PageWhatsAppSend extends StatelessWidget {
   final String phoneNumber;
@@ -44,7 +46,11 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       WidgetsBinding.instance.addObserver(this);
-      _provider.getClipboard();
+      FlutterClipboard.paste().then((value) {
+        if (Validations().validatePhone(value)) {
+          _provider.showDialogWhatsApp(1, context);
+        }
+      });
       _provider.getCodeCountry("+972");
     });
   }
@@ -60,6 +66,7 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.paused) {
       _provider.phoneControllerGet.clear();
+      _provider.focusNodeGet.unfocus();
     }
   }
 
@@ -247,6 +254,7 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
             vertical: ResponsiveScreen().heightMediaQuery(context, 10),
           ),
           child: TextFormField(
+            focusNode: _provider.focusNodeGet,
             textAlign: TextAlign.center,
             textAlignVertical: TextAlignVertical.center,
             controller: textEditingController,
@@ -306,7 +314,8 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
           ),
         ),
         onPressed: () => {
-          _provider.buttonClickSendWhatsApp(),
+          _provider.showDialogWhatsApp(
+              2, context, _provider.phoneControllerGet.text),
         },
       ),
     );
