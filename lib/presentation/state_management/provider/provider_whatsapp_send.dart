@@ -30,11 +30,6 @@ class ProviderWhatsAppSend extends ChangeNotifier {
 
   FocusNode get focusNodeGet => _focusNode;
 
-  void focusNode(FocusNode focusNode) {
-    _focusNode = focusNode;
-    notifyListeners();
-  }
-
   Future<void> _getContacts() async {
     final Iterable<Contact> contacts = await ContactsService.getContacts();
     _contacts = contacts;
@@ -55,7 +50,7 @@ class ProviderWhatsAppSend extends ChangeNotifier {
     }
   }
 
-  void getClipboard() {
+  void _getClipboard() {
     FlutterClipboard.paste().then((value) {
       if (Validations().validatePhone(value)) {
         phoneControllerGet.text = value;
@@ -73,7 +68,7 @@ class ProviderWhatsAppSend extends ChangeNotifier {
     return snapshot != null;
   }
 
-  void buttonClickSendWhatsApp() {
+  void _buttonClickSendWhatsApp() {
     if (phoneControllerGet.text.isNotEmpty &&
         Validations().validatePhone(phoneControllerGet.text)) {
       launch(
@@ -187,9 +182,9 @@ class ProviderWhatsAppSend extends ChangeNotifier {
                         ),
                         onPressed: () {
                           type == 1
-                              ? getClipboard()
+                              ? _getClipboard()
                               : type == 2
-                                  ? buttonClickSendWhatsApp()
+                                  ? _buttonClickSendWhatsApp()
                                   : null;
                           Navigator.of(context).pop();
                         }),
