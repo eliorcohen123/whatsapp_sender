@@ -50,15 +50,6 @@ class ProviderWhatsAppSend extends ChangeNotifier {
     }
   }
 
-  void _getClipboard() {
-    FlutterClipboard.paste().then((value) {
-      if (Validations().validatePhone(value)) {
-        phoneControllerGet.text = value;
-        notifyListeners();
-      }
-    });
-  }
-
   Future<bool> _rootFirebaseIsExists(
       DatabaseReference databaseReference, String phoneNumber) async {
     DataSnapshot snapshot = await databaseReference.once();
@@ -182,7 +173,7 @@ class ProviderWhatsAppSend extends ChangeNotifier {
                         ),
                         onPressed: () {
                           type == 1
-                              ? _getClipboard()
+                              ? phoneControllerGet.text = phoneNumber
                               : type == 2
                                   ? _buttonClickSendWhatsApp()
                                   : null;
