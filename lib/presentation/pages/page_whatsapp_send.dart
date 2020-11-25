@@ -48,7 +48,7 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
       WidgetsBinding.instance.addObserver(this);
       FlutterClipboard.paste().then((value) {
         if (Validations().validatePhone(value)) {
-          _provider.showDialogWhatsApp(1, context, value);
+          _provider.showDialogWhatsApp(context, value);
         }
       });
       _provider.getCodeCountry("+972");
@@ -314,8 +314,7 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
           ),
         ),
         onPressed: () => {
-          _provider.showDialogWhatsApp(
-              2, context, _provider.phoneControllerGet.text),
+          _provider.buttonClickSendWhatsApp(),
         },
       ),
     );

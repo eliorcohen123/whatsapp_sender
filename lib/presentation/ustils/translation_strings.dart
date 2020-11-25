@@ -39,7 +39,7 @@ class Translations {
       Strings.phone_auth: "אימות נייד",
       Strings.send_sms: "שליחת SMS",
       Strings.login_after_sms: "התחברות לאחר SMS",
-      Strings.please_enter_some_text: "בבקשה הכנס\י טקסט כלשהו",
+      Strings.please_enter_some_text: "בבקשה הכנס/י טקסט כלשהו",
       Strings.check_code: "אנא בדוק/י את קוד האימות בטלפון שלך.",
       Strings.received_phone_auth_credential: "התקבל אישור טלפוני:",
       Strings.phone_failed: "אימות מספר הטלפון נכשל. קוד:",

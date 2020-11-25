@@ -59,7 +59,7 @@ class ProviderWhatsAppSend extends ChangeNotifier {
     return snapshot != null;
   }
 
-  void _buttonClickSendWhatsApp() {
+  void buttonClickSendWhatsApp() {
     if (phoneControllerGet.text.isNotEmpty &&
         Validations().validatePhone(phoneControllerGet.text)) {
       launch(
@@ -94,8 +94,7 @@ class ProviderWhatsAppSend extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future showDialogWhatsApp(int type, BuildContext context,
-      [String phoneNumber]) {
+  Future showDialogWhatsApp(BuildContext context, String phoneNumber) {
     return showDialog(
       context: context,
       builder: (context) {
@@ -108,14 +107,7 @@ class ProviderWhatsAppSend extends ChangeNotifier {
             children: <Widget>[
               Center(
                 child: Text(
-                  type == 1
-                      ? Translations.of(context)
-                          .getString(Strings.paste_text_dialog)
-                      : type == 2
-                          ? Translations.of(context)
-                                  .getString(Strings.message_text_dialog) +
-                              " $phoneNumber?"
-                          : '',
+                  Translations.of(context).getString(Strings.paste_text_dialog),
                   style: const TextStyle(fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
@@ -131,7 +123,7 @@ class ProviderWhatsAppSend extends ChangeNotifier {
                     child: RaisedButton(
                       highlightElevation: 0.0,
                       splashColor: Colors.deepPurpleAccent,
-                      highlightColor: Colors.deepPurpleAccent,
+                      highlightColor: Colors.purpleAccent,
                       elevation: 0.0,
                       color: Colors.deepPurpleAccent,
                       shape: RoundedRectangleBorder(
@@ -172,11 +164,7 @@ class ProviderWhatsAppSend extends ChangeNotifier {
                           ),
                         ),
                         onPressed: () {
-                          type == 1
-                              ? phoneControllerGet.text = phoneNumber
-                              : type == 2
-                                  ? _buttonClickSendWhatsApp()
-                                  : null;
+                          phoneControllerGet.text = phoneNumber;
                           Navigator.of(context).pop();
                         }),
                   ),
