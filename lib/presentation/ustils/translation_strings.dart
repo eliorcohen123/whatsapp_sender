@@ -23,15 +23,15 @@ class Translations {
       Strings.phone_failed: "Phone number verification failed. Code:",
       Strings.message: "Message:",
       Strings.invalid_phone: "Invalid phone number",
-      Strings.prefix: "Prefix",
+      Strings.prefix: "Country prefix",
       Strings.start_conversation: "Start a chat",
-      Strings.phone_number: "Phone number",
+      Strings.phone_number: "Full phone number",
       Strings.enter_a_message:
-          "Enter a phone number you would like to send a WhatsApp message",
+          "Enter a full phone number you would like to send a WhatsApp message",
       Strings.paste_text_dialog:
-          "Are you interested to paste your copied cell phone number?",
+          "Are you interested to paste your copied phone number?",
       Strings.message_text_dialog:
-          "Are you interested to pass to a WhatsApp conversation with the cell phone number",
+          "Are you interested to pass to a WhatsApp conversation with the phone number",
       Strings.yes: "Yes",
       Strings.no: "No",
     },
@@ -45,11 +45,11 @@ class Translations {
       Strings.phone_failed: "אימות מספר הטלפון נכשל. קוד:",
       Strings.message: "הודעה:",
       Strings.invalid_phone: "מס' נייד לא חוקי",
-      Strings.prefix: "קידומת",
+      Strings.prefix: "קידומת מדינה",
       Strings.start_conversation: "התחל/י צ'אט",
-      Strings.phone_number: "מס' טלפון",
+      Strings.phone_number: "מס' טלפון מלא",
       Strings.enter_a_message:
-          "הכנס/י מספר טלפון אליו תרצה/י לשלוח הודעת WhatsApp",
+          "הכנס/י מספר טלפון מלא אליו תרצה/י לשלוח הודעת WhatsApp",
       Strings.paste_text_dialog:
           "האם את/ה מעוניין/ת להדביק את מס' הנייד המועתק אצלך?",
       Strings.message_text_dialog:
