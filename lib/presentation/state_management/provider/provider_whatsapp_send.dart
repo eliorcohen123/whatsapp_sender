@@ -1,4 +1,3 @@
-import 'package:clipboard/clipboard.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
