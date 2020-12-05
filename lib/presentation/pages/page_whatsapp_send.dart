@@ -3,6 +3,7 @@ import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:whatsapp_sender/core/constants/constants_images.dart';
 import 'package:whatsapp_sender/presentation/state_management/provider/provider_whatsapp_send.dart';
 import 'package:whatsapp_sender/presentation/ustils/responsive_screen.dart';
 import 'package:whatsapp_sender/presentation/ustils/strings.dart';
@@ -80,6 +81,8 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
           child: SingleChildScrollView(
             child: Column(
               children: [
+                UtilsApp.dividerHeight(context, 20),
+                _share(context),
                 UtilsApp.dividerHeight(context, 150),
                 _title(),
                 UtilsApp.dividerHeight(context, 70),
@@ -91,6 +94,32 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
           ),
         ),
       ),
+    );
+  }
+
+  Row _share(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Column(
+          children: [
+            Text(
+              Translations.of(context).getString(Strings.share),
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
+            UtilsApp.dividerHeight(context, 5),
+            InkWell(
+              customBorder: CircleBorder(),
+              onTap: () => _provider.shareApp(context),
+              child: Container(
+                margin: EdgeInsets.all(3),
+                child: Image.asset(ConstantsImages.share, scale: 12),
+              ),
+            ),
+          ],
+        ),
+        UtilsApp.dividerWidth(context, 20),
+      ],
     );
   }
 

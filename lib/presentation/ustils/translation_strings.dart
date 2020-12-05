@@ -34,6 +34,7 @@ class Translations {
           "Are you interested to pass to a WhatsApp conversation with the phone number",
       Strings.yes: "Yes",
       Strings.no: "No",
+      Strings.share: "Share us",
     },
     'he': {
       Strings.phone_auth: "אימות נייד",
@@ -56,6 +57,7 @@ class Translations {
           "האם את/ה מעוניין/ת לעבור לשיחת WhatsApp עם מס' הנייד",
       Strings.yes: "כן",
       Strings.no: "לא",
+      Strings.share: "שתפו אותנו",
     },
   };
 

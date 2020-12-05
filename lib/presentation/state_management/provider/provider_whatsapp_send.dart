@@ -2,6 +2,7 @@ import 'package:contacts_service/contacts_service.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:whatsapp_sender/presentation/ustils/responsive_screen.dart';
 import 'package:whatsapp_sender/presentation/ustils/strings.dart';
@@ -91,6 +92,14 @@ class ProviderWhatsAppSend extends ChangeNotifier {
   void getCodeCountry(String value) {
     _prefixCode = value;
     notifyListeners();
+  }
+
+  void shareApp(BuildContext context) {
+    final RenderBox box = context.findRenderObject();
+    Share.share(
+      'Share us!\nhttps://play.google.com/store/apps/details?id=com.flutter.whatsapp_sender',
+      sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,
+    );
   }
 
   Future showDialogWhatsApp(BuildContext context, String phoneNumber) {

@@ -8,7 +8,7 @@ class Validations {
   Validations._internal();
 
   bool validatePhone(String value) {
-    RegExp regex = RegExp(r"^[0-9]{10}$");
+    RegExp regex = RegExp(r"^[0-9]{9,10}$");
     return regex.hasMatch(value);
   }
 }

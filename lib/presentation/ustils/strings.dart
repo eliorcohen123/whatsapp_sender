@@ -15,5 +15,6 @@ enum Strings {
   paste_text_dialog,
   message_text_dialog,
   no,
-  yes
+  yes,
+  share,
 }
