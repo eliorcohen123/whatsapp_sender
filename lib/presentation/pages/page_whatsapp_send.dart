@@ -83,7 +83,7 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
               children: [
                 UtilsApp.dividerHeight(context, 20),
                 _share(context),
-                UtilsApp.dividerHeight(context, 150),
+                UtilsApp.dividerHeight(context, 100),
                 _title(),
                 UtilsApp.dividerHeight(context, 70),
                 _textFieldsData(),
@@ -99,8 +99,9 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
 
   Row _share(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
+        UtilsApp.dividerWidth(context, 20),
         Column(
           children: [
             Text(
@@ -118,7 +119,6 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
             ),
           ],
         ),
-        UtilsApp.dividerWidth(context, 20),
       ],
     );
   }

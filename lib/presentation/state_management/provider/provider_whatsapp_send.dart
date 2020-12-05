@@ -97,7 +97,7 @@ class ProviderWhatsAppSend extends ChangeNotifier {
   void shareApp(BuildContext context) {
     final RenderBox box = context.findRenderObject();
     Share.share(
-      'Share us!\nhttps://play.google.com/store/apps/details?id=com.flutter.whatsapp_sender',
+      Translations.of(context).getString(Strings.share_text),
       sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,
     );
   }

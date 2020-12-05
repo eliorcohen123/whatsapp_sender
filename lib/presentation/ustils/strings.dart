@@ -17,4 +17,5 @@ enum Strings {
   no,
   yes,
   share,
+  share_text,
 }

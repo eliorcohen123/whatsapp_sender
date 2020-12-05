@@ -34,7 +34,9 @@ class Translations {
           "Are you interested to pass to a WhatsApp conversation with the phone number",
       Strings.yes: "Yes",
       Strings.no: "No",
-      Strings.share: "Share us",
+      Strings.share: "Invite friends",
+      Strings.share_text:
+          "Hi, recommended joining now for free to 'Direct message - Chik chuk' app that allows sending WhatsApp messages easily and without having to save the number in contacts and other additional features and of course does not contain advertisements\nhttps://play.google.com/store/apps/details?id=com.flutter.whatsapp_sender",
     },
     'he': {
       Strings.phone_auth: "אימות נייד",
@@ -57,7 +59,9 @@ class Translations {
           "האם את/ה מעוניין/ת לעבור לשיחת WhatsApp עם מס' הנייד",
       Strings.yes: "כן",
       Strings.no: "לא",
-      Strings.share: "שתפו אותנו",
+      Strings.share: "הזמינו חברים",
+      Strings.share_text:
+          "היי, מומלץ להצטרף עכשיו בחינם לאפליקציית 'Direct message - Chik chuk' המאפשרת שליחת הודעות WhatsApp בקלות וללא צורך לשמור את המספר באנשי הקשר ועוד פיצ'רים נוספים וכמובן שאינה מכילה פרסומות\nhttps://play.google.com/store/apps/details?id=com.flutter.whatsapp_sender",
     },
   };
 
