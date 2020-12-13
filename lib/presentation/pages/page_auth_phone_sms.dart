@@ -174,7 +174,6 @@ class _PageAuthPhoneSmsProvState extends State<PageAuthPhoneSmsProv> {
                         Form(
                           key: _provider.formKeyPhoneGet,
                           child: WidgetTFFFirebase(
-                            length: 10,
                             width: ResponsiveScreen()
                                 .widthMediaQuery(context, 200),
                             controller: _provider.phoneControllerGet,
@@ -204,7 +203,6 @@ class _PageAuthPhoneSmsProvState extends State<PageAuthPhoneSmsProv> {
                         Form(
                           key: _provider.formKeyPhoneGet,
                           child: WidgetTFFFirebase(
-                            length: 10,
                             width: ResponsiveScreen()
                                 .widthMediaQuery(context, 200),
                             controller: _provider.phoneControllerGet,

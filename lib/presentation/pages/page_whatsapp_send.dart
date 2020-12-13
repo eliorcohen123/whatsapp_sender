@@ -9,7 +9,6 @@ import 'package:whatsapp_sender/presentation/ustils/responsive_screen.dart';
 import 'package:whatsapp_sender/presentation/ustils/strings.dart';
 import 'package:whatsapp_sender/presentation/ustils/translation_strings.dart';
 import 'package:whatsapp_sender/presentation/ustils/utils_app.dart';
-import 'package:whatsapp_sender/presentation/ustils/validations.dart';
 
 class PageWhatsAppSend extends StatelessWidget {
   final String phoneNumber;
@@ -48,7 +47,7 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       WidgetsBinding.instance.addObserver(this);
       FlutterClipboard.paste().then((value) {
-        if (Validations().validatePhone(value)) {
+        if (value.isNotEmpty) {
           _provider.showDialogWhatsApp(context, value);
         }
       });
@@ -193,8 +192,7 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
                 _columnTextField(
                     Translations.of(context).getString(Strings.phone_number),
                     _provider.phoneControllerGet,
-                    200,
-                    10),
+                    200),
               ],
             )
           : Row(
@@ -204,8 +202,7 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
                 _columnTextField(
                     Translations.of(context).getString(Strings.phone_number),
                     _provider.phoneControllerGet,
-                    200,
-                    10),
+                    200),
                 UtilsApp.dividerWidth(context, 20),
                 Column(
                   children: [
@@ -259,8 +256,8 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
     );
   }
 
-  Widget _columnTextField(String text,
-      TextEditingController textEditingController, double width, int length) {
+  Widget _columnTextField(
+      String text, TextEditingController textEditingController, double width) {
     return Column(
       children: [
         Text(
@@ -288,9 +285,6 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
             textAlignVertical: TextAlignVertical.center,
             controller: textEditingController,
             keyboardType: TextInputType.phone,
-            inputFormatters: [
-              LengthLimitingTextInputFormatter(length),
-            ],
             validator: (String value) {
               if (value.isEmpty) {
                 return Translations.of(context)

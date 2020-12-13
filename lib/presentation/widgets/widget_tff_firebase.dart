@@ -4,16 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:whatsapp_sender/presentation/ustils/responsive_screen.dart';
 import 'package:whatsapp_sender/presentation/ustils/strings.dart';
 import 'package:whatsapp_sender/presentation/ustils/translation_strings.dart';
-import 'package:whatsapp_sender/presentation/ustils/utils_app.dart';
 
 class WidgetTFFFirebase extends StatelessWidget {
-  final int length;
   final double width;
   final TextEditingController controller;
 
   const WidgetTFFFirebase({
     Key key,
-    @required this.length,
     @required this.width,
     @required this.controller,
   }) : super(key: key);
@@ -29,9 +26,6 @@ class WidgetTFFFirebase extends StatelessWidget {
         key: key,
         controller: controller,
         keyboardType: TextInputType.phone,
-        inputFormatters: [
-          LengthLimitingTextInputFormatter(length),
-        ],
         validator: (String value) {
           if (value.isEmpty) {
             return Translations.of(context)

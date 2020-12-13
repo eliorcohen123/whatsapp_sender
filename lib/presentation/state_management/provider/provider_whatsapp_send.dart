@@ -8,7 +8,6 @@ import 'package:whatsapp_sender/presentation/ustils/responsive_screen.dart';
 import 'package:whatsapp_sender/presentation/ustils/strings.dart';
 import 'package:whatsapp_sender/presentation/ustils/translation_strings.dart';
 import 'package:whatsapp_sender/presentation/ustils/utils_app.dart';
-import 'package:whatsapp_sender/presentation/ustils/validations.dart';
 
 class ProviderWhatsAppSend extends ChangeNotifier {
   final TextEditingController _phoneController = TextEditingController();
@@ -61,7 +60,7 @@ class ProviderWhatsAppSend extends ChangeNotifier {
 
   void buttonClickSendWhatsApp() {
     if (phoneControllerGet.text.isNotEmpty &&
-        Validations().validatePhone(phoneControllerGet.text)) {
+        phoneControllerGet.text.isNotEmpty) {
       launch(
         "https://wa.me/$prefixCodeGet${phoneControllerGet.text}",
         forceSafariVC: false,

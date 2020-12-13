@@ -4,7 +4,6 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:whatsapp_sender/presentation/ustils/shower_pages.dart';
 import 'package:whatsapp_sender/presentation/ustils/strings.dart';
 import 'package:whatsapp_sender/presentation/ustils/translation_strings.dart';
-import 'package:whatsapp_sender/presentation/ustils/validations.dart';
 
 class ProviderPhoneSMSAuth extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -201,13 +200,13 @@ class ProviderPhoneSMSAuth extends ChangeNotifier {
   void buttonClickSendSms(BuildContext context) {
     if (formKeyPhoneGet.currentState.validate() &&
         phoneControllerGet.text.isNotEmpty) {
-      if (Validations().validatePhone(phoneControllerGet.text)) {
+      if (phoneControllerGet.text.isNotEmpty) {
         isLoading(true);
         textError('');
         textOk('');
 
         _verifyPhoneNumber(context);
-      } else if (!Validations().validatePhone(phoneControllerGet.text)) {
+      } else if (phoneControllerGet.text.isEmpty) {
         isSuccess(false);
         textError(Translations.of(context).getString(Strings.invalid_phone));
       }
