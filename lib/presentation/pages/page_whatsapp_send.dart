@@ -9,6 +9,7 @@ import 'package:whatsapp_sender/presentation/ustils/responsive_screen.dart';
 import 'package:whatsapp_sender/presentation/ustils/strings.dart';
 import 'package:whatsapp_sender/presentation/ustils/translation_strings.dart';
 import 'package:whatsapp_sender/presentation/ustils/utils_app.dart';
+import 'package:whatsapp_sender/presentation/ustils/validations.dart';
 
 class PageWhatsAppSend extends StatelessWidget {
   final String phoneNumber;
@@ -47,7 +48,7 @@ class _PageWhatsAppSendProvState extends State<PageWhatsAppSendProv>
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       WidgetsBinding.instance.addObserver(this);
       FlutterClipboard.paste().then((value) {
-        if (value.isNotEmpty) {
+        if (Validations().validatePhone(value)) {
           _provider.showDialogWhatsApp(context, value);
         }
       });
